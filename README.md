@@ -1,4 +1,4 @@
-#Author:
+# Author:
 Matt Ahles
 
 ## Goal of the project
