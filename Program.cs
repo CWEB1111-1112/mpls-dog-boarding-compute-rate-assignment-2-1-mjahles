@@ -13,9 +13,8 @@ namespace assignment2
             string serviceCode;
 
             welcome();
-            //Stay duration
-            Console.WriteLine("Please input the number of days your dog will be staying with us:");
-            stayDuration = Convert.ToInt32(Console.ReadLine());
+            stayDuration = stayLength();
+            
             //Service add-on yes/no
             Console.WriteLine("\nServices:\nNo add-ons: $75.00 per day\nBathing and Grooming: $169.00 per day\nOnly Bathing: $112.00 per day\n\nWould you like any add-on services? (Y/N):");
             servicesIncluded = Console.ReadLine();
@@ -36,11 +35,22 @@ namespace assignment2
                 totalCost = computeRate(stayDuration, serviceCode);
                 end(stayDuration, serviceCode, totalCost);
             }
+            else{
+                while(servicesIncluded != "Y" && servicesIncluded != "N"){
+                    Console.WriteLine("\nPlease enter a valid answer.\nServices:\nNo add-ons: $75.00 per day\nBathing and Grooming: $169.00 per day\nOnly Bathing: $112.00 per day\n\nWould you like any add-on services? (Y/N):");
+                    servicesIncluded = Console.ReadLine();
+                }
+            }
         }
 
         //welcome method
         static void welcome(){
             Console.WriteLine("Welcome to MPLS Dog Boarding!\n");
+        }
+        //stayLength method
+        static int stayLength(){
+            Console.WriteLine("Please input the number of days your dog will be staying with us:");
+            return Convert.ToInt32(Console.ReadLine());
         }
         //computeRate without addons method
         static double computeRate(int stayDuration){
