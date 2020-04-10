@@ -22,6 +22,7 @@ namespace assignment2
             //Decision making logic
             if(servicesIncluded == "N"){
                 totalCost = computeRate(stayDuration);
+                serviceCode = "N";
                 end(stayDuration, serviceCode, totalCost);
             }
             else if(servicesIncluded =="Y"){
@@ -53,7 +54,7 @@ namespace assignment2
             if(addonCode == "A"){
                 return stayDuration * BATH_GROOMING_FLAT_COST;
             }
-            else if(addonCode == "C"){
+            else{
                 return stayDuration * BATH_FLAT_COST;
             }
         }
