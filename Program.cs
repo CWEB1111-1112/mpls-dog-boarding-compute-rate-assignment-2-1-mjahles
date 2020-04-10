@@ -31,7 +31,7 @@ namespace assignment2
                     Console.WriteLine("Please enter a valid service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
                     serviceCode = Console.ReadLine();
                 }
-                computeRate(stayDuration, serviceCode);
+                return totalCost = computeRate(stayDuration, serviceCode);
             }
         }
 
