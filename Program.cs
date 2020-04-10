@@ -10,6 +10,7 @@ namespace assignment2
             int stayDuration;
             string servicesIncluded;
             double totalCost;
+            string serviceCode;
 
             welcome();
             //Stay duration
@@ -20,10 +21,10 @@ namespace assignment2
             servicesIncluded = Console.ReadLine();
             //Decision making logic
             if(servicesIncluded == "N"){
-                computeRate(stayDuration);
-                end();
-            }else if(servicesIncluded =="Y"){
-                string serviceCode;
+                totalCost = computeRate(stayDuration);
+                end(stayDuration, totalCost);
+            }
+            else if(servicesIncluded =="Y"){
                 Console.WriteLine("Please select your Service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
                 serviceCode = Console.ReadLine();
                 while(serviceCode !== "A" && serviceCode !== "C"){
@@ -51,10 +52,14 @@ namespace assignment2
 
             if(addonCode == "A"){
                 return stayDuration * BATH_GROOMING_FLAT_COST;
-            }else if(addonCode == "C"){
+            }
+            else if(addonCode == "C"){
                 return stayDuration * BATH_FLAT_COST;
             }
         }
-        
+        //end method
+        static void end(int stayDuration, string addonCode, double totalCost){
+            Console.WriteLine($"Days in Care: {stayDuration}\n Service Code: {serviceCode}\n Total cost of stay: {totalCost}");
+        }
     }
 }
