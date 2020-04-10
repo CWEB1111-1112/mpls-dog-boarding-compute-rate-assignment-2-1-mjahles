@@ -14,32 +14,23 @@ namespace assignment2
 
             welcome();
             stayDuration = stayLength();
+            servicesIncluded = extraService();
             
-            //Service add-on yes/no
-            Console.WriteLine("\nServices:\nNo add-ons: $75.00 per day\nBathing and Grooming: $169.00 per day\nOnly Bathing: $112.00 per day\n\nWould you like any add-on services? (Y/N):");
-            servicesIncluded = Console.ReadLine();
-            //Main decision-making logic
-            if(servicesIncluded == "N"){
-                totalCost = computeRate(stayDuration);
-                serviceCode = "N";
-                end(stayDuration, serviceCode, totalCost);
-            }
-            else if(servicesIncluded =="Y"){
-                Console.WriteLine("\nPlease select your Service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
-                serviceCode = Console.ReadLine();
+            //Main decision-making logic            
+            if(servicesIncluded =="Y"){
+                serviceCode = selectService();
                 while(serviceCode != "A" && serviceCode != "C"){
-                    Console.WriteLine("Please enter a valid service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
-                    serviceCode = Console.ReadLine();
+                    Console.WriteLine("Please enter a valid service Add-on.");
+                    serviceCode = selectService();
                 }
                 Console.WriteLine("");
                 totalCost = computeRate(stayDuration, serviceCode);
                 end(stayDuration, serviceCode, totalCost);
             }
             else{
-                while(servicesIncluded != "Y" && servicesIncluded != "N"){
-                    Console.WriteLine("\nPlease enter a valid answer.\nServices:\nNo add-ons: $75.00 per day\nBathing and Grooming: $169.00 per day\nOnly Bathing: $112.00 per day\n\nWould you like any add-on services? (Y/N):");
-                    servicesIncluded = Console.ReadLine();
-                }
+                totalCost = computeRate(stayDuration);
+                serviceCode = "N";
+                end(stayDuration, serviceCode, totalCost);
             }
         }
 
@@ -51,6 +42,16 @@ namespace assignment2
         static int stayLength(){
             Console.WriteLine("Please input the number of days your dog will be staying with us:");
             return Convert.ToInt32(Console.ReadLine());
+        }
+        //extraService method
+        static string extraService(){
+            Console.WriteLine("\nServices:\nNo add-ons: $75.00 per day\nBathing and Grooming: $169.00 per day\nOnly Bathing: $112.00 per day\n\nWould you like any add-on services? (Y/N):");
+            return Console.ReadLine();
+        }
+        //selectService method
+        static string selectService(){
+            Console.WriteLine("\nPlease select your Service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
+            return Console.ReadLine();
         }
         //computeRate without addons method
         static double computeRate(int stayDuration){
