@@ -60,7 +60,7 @@ namespace assignment2
         }
         //end method
         static void end(int stayDuration, string serviceCode, double totalCost){
-            Console.WriteLine($"Days in Care: {stayDuration}\n Service Code: {serviceCode}\n Total cost of stay: {totalCost}");
+            Console.WriteLine($"Days in Care: {stayDuration}\n Service Code: {serviceCode}\n Total cost of stay: {totalCost.ToString("c")}");
         }
     }
 }
