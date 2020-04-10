@@ -29,7 +29,7 @@ namespace assignment2
             }
             else{
                 totalCost = computeRate(stayDuration);
-                serviceCode = "N";
+                serviceCode = "N/A";
                 end(stayDuration, serviceCode, totalCost);
             }
         }
