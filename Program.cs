@@ -19,20 +19,22 @@ namespace assignment2
             //Service add-on yes/no
             Console.WriteLine("\nServices:\nNo add-ons: $75.00 per day\nBathing and Grooming: $169.00 per day\nOnly Bathing: $112.00 per day\n\nWould you like any add-on services? (Y/N):");
             servicesIncluded = Console.ReadLine();
-            //Decision making logic
+            //Main decision-making logic
             if(servicesIncluded == "N"){
                 totalCost = computeRate(stayDuration);
                 serviceCode = "N";
                 end(stayDuration, serviceCode, totalCost);
             }
             else if(servicesIncluded =="Y"){
-                Console.WriteLine("Please select your Service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
+                Console.WriteLine("\nPlease select your Service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
                 serviceCode = Console.ReadLine();
                 while(serviceCode != "A" && serviceCode != "C"){
                     Console.WriteLine("Please enter a valid service Add-on:\nBathing and Grooming: $169.00 per day (A)\nOnly Bathing: $112.00 per day (C)");
                     serviceCode = Console.ReadLine();
                 }
+                Console.WriteLine("");
                 totalCost = computeRate(stayDuration, serviceCode);
+                end(stayDuration, serviceCode, totalCost);
             }
         }
 
